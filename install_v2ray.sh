@@ -43,7 +43,7 @@ EOF
 #启动v2ray服务端
 systemctl enable v2ray; 
 systemctl start v2ray; 
-systemctl status v2ray >${TMP_FILE}
+systemctl status v2ray >${TMP_FILE} 2>&1
 
 #信息格式化
 run_status=$(cat ${TMP_FILE} | grep "Active:" | cut -d ' ' -f5-6)
