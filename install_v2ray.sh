@@ -7,7 +7,7 @@
 
 #配置基本变量
 PORT="1040"
-CLIENTS_ID="76555b48-78u6-660f-823f-f1433eff676e"
+CLIENTS_ID=$(uuidgen)
 PROTOCOL="vmess"
 V2RAY_CONFIG="/usr/local/etc/v2ray/config.json"
 TMP_FILE="/tmp/v2ray_install_result.txt"
