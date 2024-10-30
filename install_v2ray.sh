@@ -18,32 +18,32 @@ TMP_FILE="/tmp/v2ray_install_result.txt"
 #修改配置文件
 cat >${V2RAY_CONFIG} <<-EOF
 {
-	"inbounds": [{
-		"port": "${PORT}",
-		"listen": "0.0.0.0",
-		"tag": "socks-inbound",
-		"protocol": "${PROTOCOL}",
-		"settings": {
-			"clients": [{
-				"id": "${CLIENTS_ID}"
-			}]
-		},
+    "inbounds": [{
+        "port": "${PORT}",
+        "listen": "0.0.0.0",
+        "tag": "socks-inbound",
+        "protocol": "${PROTOCOL}",
+        "settings": {
+            "clients": [{
+                "id": "${CLIENTS_ID}"
+            }]
+        },
         "streamSettings": {
             "network": "ws",
             "wsSettings": {
                 "path": "/v2ray"
             }
       }
-	}],
-	"outbounds": [{
-		"protocol": "freedom",
-		"settings": {},
-		"tag": "direct"
-	}, {
-		"protocol": "blackhole",
-		"settings": {},
-		"tag": "blocked"
-	}]
+    }],
+    "outbounds": [{
+        "protocol": "freedom",
+        "settings": {},
+        "tag": "direct"
+    }, {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "blocked"
+    }]
 }
 EOF
 
