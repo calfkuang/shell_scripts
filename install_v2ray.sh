@@ -3,9 +3,10 @@
 #      使用前先修改CLIENTS_ID值,示例：76555b48-78u6-660f-823f-f1433eff676e
 #作者：况腾飞
 #联系：calfkuang@163.com
+#TODO: 不同协议下配置参数不一样
 
 #配置基本变量
-PORT="443"
+PORT="1040"
 CLIENTS_ID="76555b48-78u6-660f-823f-f1433eff676e"
 PROTOCOL="vmess"
 V2RAY_CONFIG="/usr/local/etc/v2ray/config.json"
@@ -26,7 +27,13 @@ cat >${V2RAY_CONFIG} <<-EOF
 			"clients": [{
 				"id": "${CLIENTS_ID}"
 			}]
-		}
+		},
+        "streamSettings": {
+            "network": "ws",
+            "wsSettings": {
+                "path": "/v2ray"
+            }
+      }
 	}],
 	"outbounds": [{
 		"protocol": "freedom",
@@ -43,7 +50,7 @@ EOF
 #启动v2ray服务端
 systemctl enable v2ray; 
 systemctl start v2ray; 
-systemctl status v2ray >${TMP_FILE} 2>&1
+systemctl status v2ray >${TMP_FILE} 2>&1;
 
 #信息格式化
 run_status=$(cat ${TMP_FILE} | grep "Active:" | cut -d ' ' -f5-6)
