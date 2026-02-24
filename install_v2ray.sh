@@ -1,6 +1,6 @@
 #!/bin/bash
 #功能：自动安装v2ray服务端
-#作者：况腾飞
+#作者：烟雨江南
 #联系：calfkuang@163.com
 #TODO: 不同协议下配置参数不一样
 
@@ -12,7 +12,8 @@ V2RAY_CONFIG="/usr/local/etc/v2ray/config.json"
 TMP_FILE="/tmp/v2ray_install_result.txt"
 
 #安装v2ray服务端
-/bin/bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+curl -L -o install-v2ray.sh https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh &&\
+bash install-v2ray.sh
 
 #修改配置文件
 cat >${V2RAY_CONFIG} <<-EOF
